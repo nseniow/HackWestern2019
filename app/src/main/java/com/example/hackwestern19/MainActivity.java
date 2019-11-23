@@ -11,6 +11,11 @@ import com.example.hackwestern19.PictureTaker.Camera2BasicFragment;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import in.myinnos.library.AppIconNameChanger;
+
 public class MainActivity extends AppCompatActivity {
 
     Camera2BasicFragment camera2BasicFragment;
@@ -34,5 +39,15 @@ public class MainActivity extends AppCompatActivity {
                 camera2BasicFragment.takePicture();
             }
         });
+
+        List<String> disableNames = new ArrayList<>();
+        disableNames.add("com.example.hackwestern19Tangerine");
+
+        new AppIconNameChanger.Builder(MainActivity.this)
+                .activeName("com.example.hackwestern19TD") // String
+                .disableNames(disableNames) // List<String>
+                .packageName(BuildConfig.APPLICATION_ID)
+                .build()
+                .setNow();
     }
 }
