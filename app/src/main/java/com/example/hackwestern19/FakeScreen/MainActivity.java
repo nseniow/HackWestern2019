@@ -1,4 +1,4 @@
-package com.example.hackwestern19;
+package com.example.hackwestern19.FakeScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.hackwestern19.BuildConfig;
 import com.example.hackwestern19.PictureTaker.Camera2BasicFragment;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DatabaseReference;
+import com.example.hackwestern19.R;
 
 import java.util.ArrayList;
 import java.util.List;

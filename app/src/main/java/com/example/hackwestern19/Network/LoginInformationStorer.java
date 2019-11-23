@@ -1,11 +1,9 @@
-package com.example.hackwestern19;
+package com.example.hackwestern19.Network;
 
 import android.content.Context;
 import android.util.Log;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -24,8 +22,8 @@ public class LoginInformationStorer {
         } catch (FileNotFoundException e) {
             Log.e(TAG, "Error encountered trying to open file for writing: " + "login.txt");
         }
-        out.println("email");
-        out.println("password");
+        out.println(email);
+        out.println(password);
         out.close();
     }
 

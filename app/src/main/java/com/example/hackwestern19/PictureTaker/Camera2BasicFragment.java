@@ -68,6 +68,7 @@ import androidx.fragment.app.Fragment;
 import com.example.hackwestern19.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -94,6 +95,8 @@ public class Camera2BasicFragment extends Fragment
     private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
     private static final int REQUEST_CAMERA_PERMISSION = 1;
     private static final String FRAGMENT_DIALOG = "dialog";
+
+    private FirebaseAuth mAuth;
 
     static {
         ORIENTATIONS.append(Surface.ROTATION_0, 90);
@@ -861,8 +864,9 @@ public class Camera2BasicFragment extends Fragment
 
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
                     String currentDateandTime = sdf.format(new Date()) + ".jpg";
+                    mAuth = FirebaseAuth.getInstance();
 
-                    StorageReference riversRef = mStorageRef.child(currentDateandTime);
+                    StorageReference riversRef = mStorageRef.child(mAuth.getUid()).child(currentDateandTime);
 
                     riversRef.putFile(file)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

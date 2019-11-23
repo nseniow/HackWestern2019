@@ -1,4 +1,4 @@
-package com.example.hackwestern19;
+package com.example.hackwestern19.FakeScreen;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -6,6 +6,9 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.hackwestern19.Network.LoginInformationStorer;
+import com.example.hackwestern19.Network.User;
 
 public class FakeActivity extends AppCompatActivity {
 

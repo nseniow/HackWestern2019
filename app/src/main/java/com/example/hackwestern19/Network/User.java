@@ -1,4 +1,4 @@
-package com.example.hackwestern19;
+package com.example.hackwestern19.Network;
 
 public class User {
 
