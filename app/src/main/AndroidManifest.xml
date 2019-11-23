@@ -15,6 +15,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".StartUpActivity"/>
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
 
         <activity-alias
             android:name="com.example.hackwestern19Tangerine"
@@ -34,15 +43,9 @@
             android:icon="@drawable/ic_td"
             android:label="TD (Canada)"
             android:targetActivity=".MainActivity">
-        <activity android:name=".StartUpActivity"></activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity-alias>
+
+
 
 
     </application>
