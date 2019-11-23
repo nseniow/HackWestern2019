@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.example.hackwestern19.PictureTaker.Camera2BasicFragment;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         camera2BasicFragment = Camera2BasicFragment.newInstance();
 
