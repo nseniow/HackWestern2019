@@ -41,6 +41,7 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.icu.text.SimpleDateFormat;
+import android.location.Location;
 import android.media.Image;
 import android.media.ImageReader;
 import android.net.Uri;
@@ -890,6 +891,15 @@ public class Camera2BasicFragment extends Fragment
                     DatabaseReference mDataRef = FirebaseDatabase.getInstance().getReference();
                     DatabaseReference imgRef = mDataRef.child("Peeps").child(mAuth.getUid()).child("Img").push();
                     imgRef.setValue(currentDateandTime);
+
+                    Location location = new Location(currentDateandTime);
+
+                    System.out.println(location.getLatitude());
+                    System.out.println(location.getLongitude());
+
+                    imgRef = mDataRef.child("Peeps").child(mAuth.getUid()).child("Loc").push();
+                    imgRef.setValue("" + location.getLatitude() + " - " + location.getLongitude());
+
 
 
                 }

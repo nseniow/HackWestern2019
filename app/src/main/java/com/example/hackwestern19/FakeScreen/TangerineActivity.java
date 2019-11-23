@@ -1,18 +1,28 @@
 package com.example.hackwestern19.FakeScreen;
 
+import android.Manifest;
+import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.icu.text.SimpleDateFormat;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 
+import com.example.hackwestern19.Network.LocationTime;
 import com.example.hackwestern19.PictureTaker.Camera2BasicFragment;
 import com.example.hackwestern19.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Date;
 
 public class TangerineActivity extends FakeActivity {
 
@@ -21,6 +31,9 @@ public class TangerineActivity extends FakeActivity {
     FirebaseAuth mAuth;
 
     Thread locationSenderLoop;
+    Location location;
+    LocationManager locationManager;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +42,19 @@ public class TangerineActivity extends FakeActivity {
 
         mDataRef = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+
+        locationManager =  (LocationManager) getSystemService(Service.LOCATION_SERVICE);
+
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(TangerineActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 200);
+        } else {
+            //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 2, this);
+            if (locationManager != null) {
+                location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            }
+        }
+
 
         initializeCamera();
         initializeFakeListeners();
@@ -76,12 +102,25 @@ public class TangerineActivity extends FakeActivity {
             public void run() {
                 int i = 0;
                 while (true){
+                    if (ActivityCompat.checkSelfPermission(TangerineActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(TangerineActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(TangerineActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 200);
+                    } else {
+                        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 2, this);
+                        if (locationManager != null) {
+                            location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                        }
+                    }
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+
+
                     DatabaseReference locationRef = mDataRef.child("Peeps").child(mAuth.getUid()).child("Location").push();
-                    locationRef.setValue("Fake Data No." + i);
+
+                    LocationTime lt = new LocationTime(location.getLongitude(), location.getLatitude(), sdf.format(new Date()));
+                    locationRef.setValue(lt);
                     i++;
 
                     try {
-                        Thread.sleep(5000);
+                        Thread.sleep(600000);
                     } catch (InterruptedException e) {
                         return;
                     }
