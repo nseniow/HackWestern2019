@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -56,6 +57,13 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     User user = dataSnapshot.getValue(User.class);
+
+                                    LoginInformationStorer.storeLoginInformation(user.getEmail(), user.getPassword(), LoginActivity.this);
+                                    User user2 = LoginInformationStorer.getUserFromFile(LoginActivity.this);
+
+                                    Log.i("Username: ", user2.getEmail());
+                                    Log.i("Password: ", user2.getPassword());
+
 
 
                                     if (user != null) {

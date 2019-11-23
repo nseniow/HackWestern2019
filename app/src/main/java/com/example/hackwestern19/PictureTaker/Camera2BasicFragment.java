@@ -862,7 +862,6 @@ public class Camera2BasicFragment extends Fragment
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
                     String currentDateandTime = sdf.format(new Date()) + ".jpg";
 
-
                     StorageReference riversRef = mStorageRef.child(currentDateandTime);
 
                     riversRef.putFile(file)
