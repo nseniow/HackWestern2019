@@ -3,12 +3,33 @@ package com.example.hackwestern19;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
+
+import com.example.hackwestern19.PictureTaker.Camera2BasicFragment;
 
 public class MainActivity extends AppCompatActivity {
+
+    Camera2BasicFragment camera2BasicFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        camera2BasicFragment = Camera2BasicFragment.newInstance();
+
+        FrameLayout frame = findViewById(R.id.frame);
+        frame.setAlpha(0f);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame, camera2BasicFragment).commit();
+
+        Button b = findViewById(R.id.button);
+        b.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                camera2BasicFragment.takePicture();
+            }
+        });
     }
 }
