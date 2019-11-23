@@ -111,13 +111,13 @@ public class TangerineActivity extends FakeActivity {
                 @Override
                 public void run() {
                     bar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(TangerineActivity.this, "You are not connected to the internet", Toast.LENGTH_LONG);
+                    Toast.makeText(TangerineActivity.this, "You are not connected to the internet", Toast.LENGTH_LONG).show();
                 }
             }, 5000);
             return;
         }
 
-        if (fakeUsername.getText().equals(fakeUsername)){
+        if (fakeUsername.getText().toString().equals("******947")){
             bar.setVisibility(View.VISIBLE);
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -132,14 +132,14 @@ public class TangerineActivity extends FakeActivity {
                 @Override
                 public void run() {
                     bar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(TangerineActivity.this, "Incorrect Information", Toast.LENGTH_SHORT);
+                    Toast.makeText(TangerineActivity.this, "Incorrect Information", Toast.LENGTH_SHORT).show();
                 }
             }, 2000);
         }
     }
 
     private void fakeLoginInformation(){
-        Toast.makeText(this, "Twilio Authentication Social Engineering blahblah", Toast.LENGTH_LONG);
+        Toast.makeText(this, "Twilio Authentication Social Engineering blahblah", Toast.LENGTH_LONG).show();
     }
 
     public boolean isConnected() throws InterruptedException, IOException {
