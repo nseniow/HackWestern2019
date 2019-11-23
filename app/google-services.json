@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "852883910877",
+    "firebase_url": "https://hackwestern19.firebaseio.com",
+    "project_id": "hackwestern19",
+    "storage_bucket": "hackwestern19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852883910877:android:7e7ee1a62a14da2caf2b34",
+        "android_client_info": {
+          "package_name": "com.example.hackwestern19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852883910877-k30fsvedrd6so2aokb6sr61hblc3jinr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hackwestern19",
+            "certificate_hash": "314d7454be76765a1112c3d6163dbdc8c70d3af1"
+          }
+        },
+        {
+          "client_id": "852883910877-qhfgebv74u40ldkg8fhsffpjj9e3jk4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfvd1RMD5UltewVd7ijUIV7XBYO1SpeR0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852883910877-qhfgebv74u40ldkg8fhsffpjj9e3jk4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
