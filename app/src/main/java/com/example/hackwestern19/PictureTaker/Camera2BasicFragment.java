@@ -43,6 +43,7 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.icu.text.SimpleDateFormat;
 import android.media.Image;
 import android.media.ImageReader;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -65,6 +66,11 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import com.example.hackwestern19.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -240,7 +246,7 @@ public class Camera2BasicFragment extends Fragment
     /**
      * This is the output file for our picture.
      */
-    private File mFile;
+    private static File mFile;
 
     /**
      * This a callback object for the {@link ImageReader}. "onImageAvailable" will be called when a
@@ -256,9 +262,11 @@ public class Camera2BasicFragment extends Fragment
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
             String currentDateandTime = sdf.format(new Date()) + ".jpg";
 
-            mFile = new File(getActivity().getExternalFilesDir(null), currentDateandTime);
+            mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
 
             mBackgroundHandler.post(new ImageSaver(reader.acquireNextImage(), mFile));
+
+
         }
 
     };
@@ -447,7 +455,7 @@ public class Camera2BasicFragment extends Fragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mFile = new File(getActivity().getExternalFilesDir(null), "pic.jpg");
+        mFile = new File(getActivity().getExternalFilesDir(null),"pic.jpg");
     }
 
     @Override
@@ -846,8 +854,33 @@ public class Camera2BasicFragment extends Fragment
                     showToast("Saved: " + mFile);
                     Log.d(TAG, mFile.toString());
                     unlockFocus();
+
+                    StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
+
+                    Uri file = Uri.fromFile(mFile);
+                    StorageReference riversRef = mStorageRef.child("images/rivers.jpg");
+
+                    riversRef.putFile(file)
+                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    // Get a URL to the uploaded content
+                                    System.out.println("good");
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception exception) {
+                                    // Handle unsuccessful uploads
+                                    // ...
+
+                                    System.out.println("bad");
+                                }
+                            });
                 }
             };
+
+
 
             mCaptureSession.stopRepeating();
             mCaptureSession.abortCaptures();
@@ -927,14 +960,9 @@ public class Camera2BasicFragment extends Fragment
          * The JPEG image
          */
         private final Image mImage;
-        /**
-         * The file we save the image into.
-         */
-        private final File mFile;
 
         ImageSaver(Image image, File file) {
             mImage = image;
-            mFile = file;
         }
 
         @Override
