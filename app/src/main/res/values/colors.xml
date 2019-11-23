@@ -5,6 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="control_background">#cc4285f4</color>
 
-
+    <color name="tangerineOrange">#F47A20</color>
+    <color name="tangerineBlack">#363233</color>
     <color name="ic_launcher_background">#5E94A6</color>
 </resources>
