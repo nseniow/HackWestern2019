@@ -21,8 +21,7 @@
             android:id="@+id/fakeSignUp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:layout_marginEnd="38dp"
+            android:layout_marginTop="123dp"
             android:background="@drawable/tangerine_white_box"
             android:clickable="true"
             android:fontFamily="sans-serif-medium"
@@ -34,7 +33,8 @@
             android:textColor="@color/tangerineOrange"
             android:textSize="24dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fakePersonal" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fakeRemember" />
 
         <TextView
             android:id="@+id/fakeRemember"
@@ -49,20 +49,6 @@
             android:textSize="19sp"
             app:layout_constraintStart_toEndOf="@id/fakeSwitch"
             app:layout_constraintTop_toBottomOf="@id/constraintLayout" />
-
-        <TextView
-            android:id="@+id/fakeSignUpPrompt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="55dp"
-            android:fontFamily="sans-serif-medium"
-            android:includeFontPadding="false"
-            android:text="Not A Client?"
-            android:textColor="#FFFFFF"
-            android:textSize="19sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fakePersonal" />
 
         <TextView
             android:id="@+id/fakeForgotLogin"
@@ -86,7 +72,7 @@
             android:layout_marginBottom="27dp"
             android:fontFamily="sans-serif-medium"
             android:includeFontPadding="false"
-            android:text="1-888-826-4374"
+            android:text="1-416-967-1111"
             android:textColor="#FFFFFF"
             android:textSize="19sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -129,9 +115,9 @@
             android:id="@+id/constraintLayout"
             android:layout_width="348dp"
             android:layout_height="51dp"
-            android:layout_marginStart="25dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/tangerine_black_box"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/usernamePrompt">
 
@@ -145,7 +131,7 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -160,24 +146,6 @@
             android:switchMinWidth="30dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-        <TextView
-            android:id="@+id/fakePersonal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/tangerine_white_box"
-            android:fontFamily="sans-serif-medium"
-            android:paddingLeft="25dp"
-            android:paddingTop="5dp"
-            android:paddingRight="25dp"
-            android:paddingBottom="5dp"
-            android:text="Personal"
-            android:textColor="@color/tangerineOrange"
-            android:textSize="18dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fakeRemember" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
