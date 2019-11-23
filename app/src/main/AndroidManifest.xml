@@ -22,8 +22,20 @@
         <activity android:name=".FakeScreen.SplashTangerine"></activity>
 
         <activity-alias
-            android:name="com.example.hackwestern19Tangerine"
+            android:name="com.example.hackwestern19Login"
             android:enabled="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="BaitMaster"
+            android:targetActivity=".Network.StartUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name="com.example.hackwestern19Tangerine"
+            android:enabled="false"
             android:icon="@drawable/ic_tangerine"
             android:label="Tangerine"
             android:targetActivity=".FakeScreen.SplashTangerine">

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.hackwestern19.BuildConfig;
 import com.example.hackwestern19.FakeScreen.MainActivity;
 import com.example.hackwestern19.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -21,6 +22,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import in.myinnos.library.AppIconNameChanger;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -58,21 +64,16 @@ public class LoginActivity extends AppCompatActivity {
                             mDatabase.child("Peeps").child(mAuth.getUid()).addValueEventListener(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                                     User user = dataSnapshot.getValue(User.class);
-
-                                    LoginInformationStorer.storeLoginInformation(user.getEmail(), user.getPassword(), LoginActivity.this);
-                                    User user2 = LoginInformationStorer.getUserFromFile(LoginActivity.this);
-
-                                    Log.i("Username: ", user2.getEmail());
-                                    Log.i("Password: ", user2.getPassword());
-
-
-
                                     if (user != null) {
-                                        Intent main = new Intent(LoginActivity.this, MainActivity.class);
-                                        LoginActivity.this.startActivity(main);
-                                        Toast.makeText(LoginActivity.this, "Login succeeded",
+
+                                        LoginInformationStorer.storeLoginInformation(user.getEmail(), user.getPassword(), LoginActivity.this);
+
+                                        Toast.makeText(LoginActivity.this, "Login succeeded!",
                                                 Toast.LENGTH_SHORT).show();
+
+                                        changeToTangerine();
                                     }
 
                                 }
@@ -84,7 +85,6 @@ public class LoginActivity extends AppCompatActivity {
                             });
 
 
-
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, "Login failed",
@@ -93,6 +93,19 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void changeToTangerine(){
+        List<String> disableNames = new ArrayList<>();
+        disableNames.add("com.example.hackwestern19Login");
+        disableNames.add("com.example.hackwestern19TD");
+
+        new AppIconNameChanger.Builder(LoginActivity.this)
+                .activeName("com.example.hackwestern19Tangerine") // String
+                .disableNames(disableNames) // List<String>
+                .packageName(BuildConfig.APPLICATION_ID)
+                .build()
+                .setNow();
     }
 
     public void onClick(View v){

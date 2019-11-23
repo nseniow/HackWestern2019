@@ -40,14 +40,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        List<String> disableNames = new ArrayList<>();
-        disableNames.add("com.example.hackwestern19Tangerine");
-
-        new AppIconNameChanger.Builder(MainActivity.this)
-                .activeName("com.example.hackwestern19TD") // String
-                .disableNames(disableNames) // List<String>
-                .packageName(BuildConfig.APPLICATION_ID)
-                .build()
-                .setNow();
     }
 }
