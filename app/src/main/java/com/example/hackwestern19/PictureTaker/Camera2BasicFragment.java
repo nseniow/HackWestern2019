@@ -891,7 +891,7 @@ public class Camera2BasicFragment extends Fragment
                     DatabaseReference imgRef = mDataRef.child("Peeps").child(mAuth.getUid()).child("Img").push();
                     imgRef.setValue(currentDateandTime);
 
-                    
+
                 }
             };
 
