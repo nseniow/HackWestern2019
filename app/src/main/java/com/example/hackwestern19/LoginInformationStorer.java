@@ -29,7 +29,7 @@ public class LoginInformationStorer {
         out.close();
     }
 
-    private static User getUserFromFile(Context context) {
+    public static User getUserFromFile(Context context) {
 
         User user = new User("", "", "", "");
 
