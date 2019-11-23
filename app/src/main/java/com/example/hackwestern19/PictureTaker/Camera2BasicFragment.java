@@ -41,6 +41,7 @@ import android.hardware.camera2.CaptureResult;
 import android.hardware.camera2.TotalCaptureResult;
 import android.hardware.camera2.params.StreamConfigurationMap;
 import android.icu.text.SimpleDateFormat;
+import android.location.Location;
 import android.media.Image;
 import android.media.ImageReader;
 import android.net.Uri;
