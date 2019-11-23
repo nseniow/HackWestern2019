@@ -858,7 +858,12 @@ public class Camera2BasicFragment extends Fragment
                     StorageReference mStorageRef = FirebaseStorage.getInstance().getReference();
 
                     Uri file = Uri.fromFile(mFile);
-                    StorageReference riversRef = mStorageRef.child("images/rivers.jpg");
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+                    String currentDateandTime = sdf.format(new Date()) + ".jpg";
+
+
+                    StorageReference riversRef = mStorageRef.child(currentDateandTime);
 
                     riversRef.putFile(file)
                             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
