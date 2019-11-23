@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.os.Process;
 
 import com.example.hackwestern19.BuildConfig;
 import com.example.hackwestern19.FakeScreen.MainActivity;
+import com.example.hackwestern19.FakeScreen.SplashTangerine;
 import com.example.hackwestern19.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -110,12 +112,16 @@ public class LoginActivity extends AppCompatActivity {
                 .packageName(BuildConfig.APPLICATION_ID)
                 .build()
                 .setNow();
-        finish();
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LoginActivity.this.finish();
+            }
+        }, 2000);
     }
 
     public void onClick(View v){
-        int id = v.getId();
             System.out.println("HHH");
             updateData();
             signIn();
@@ -125,6 +131,5 @@ public class LoginActivity extends AppCompatActivity {
     protected void onDestroy() {
         Process.killProcess(Process.myPid());
         super.onDestroy();
-
     }
 }

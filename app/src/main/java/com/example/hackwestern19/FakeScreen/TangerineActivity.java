@@ -8,11 +8,10 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.hackwestern19.R;
 
-public class TangerineActivity extends AppCompatActivity {
+public class TangerineActivity extends FakeActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,5 +29,20 @@ public class TangerineActivity extends AppCompatActivity {
                 startActivity(browserIntent);
             }
         });
+    }
+
+    @Override
+    void initializeUser() {
+
+    }
+
+    @Override
+    void initializeCamera() {
+
+    }
+
+    @Override
+    void initializeLocationSender() {
+
     }
 }

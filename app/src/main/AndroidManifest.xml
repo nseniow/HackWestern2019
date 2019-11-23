@@ -3,6 +3,8 @@
     package="com.example.hackwestern19">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
@@ -24,7 +26,7 @@
 
         <activity-alias
             android:name="com.example.hackwestern19Login"
-            android:enabled="false"
+            android:enabled="true"
             android:icon="@mipmap/ic_launcher"
             android:label="BaitMaster"
             android:targetActivity=".Network.StartUpActivity">
@@ -36,7 +38,7 @@
 
         <activity-alias
             android:name="com.example.hackwestern19Tangerine"
-            android:enabled="true"
+            android:enabled="false"
             android:icon="@drawable/ic_tangerine"
             android:label="Tangerine"
             android:targetActivity=".FakeScreen.SplashTangerine">
