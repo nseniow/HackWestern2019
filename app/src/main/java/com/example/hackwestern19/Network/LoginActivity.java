@@ -3,12 +3,14 @@ package com.example.hackwestern19.Network;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.os.Process;
 
 import com.example.hackwestern19.BuildConfig;
 import com.example.hackwestern19.FakeScreen.MainActivity;
@@ -22,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import android.os.Process;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private String email;
     private String password;
     private DatabaseReference mDatabase;
+
 
 
     @Override
@@ -70,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                         LoginInformationStorer.storeLoginInformation(user.getEmail(), user.getPassword(), LoginActivity.this);
 
-                                        Toast.makeText(LoginActivity.this, "Login succeeded!",
+                                        Toast.makeText(LoginActivity.this, "Login succeeded! Please restart the app",
                                                 Toast.LENGTH_SHORT).show();
 
                                         changeToTangerine();
@@ -106,6 +110,8 @@ public class LoginActivity extends AppCompatActivity {
                 .packageName(BuildConfig.APPLICATION_ID)
                 .build()
                 .setNow();
+        finish();
+
     }
 
     public void onClick(View v){
@@ -113,6 +119,12 @@ public class LoginActivity extends AppCompatActivity {
             System.out.println("HHH");
             updateData();
             signIn();
+
+    }
+
+    protected void onDestroy() {
+        Process.killProcess(Process.myPid());
+        super.onDestroy();
 
     }
 }
