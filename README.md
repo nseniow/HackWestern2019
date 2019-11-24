@@ -4,11 +4,8 @@ Hack Western Hack
 
 Project for HackWestern 2019 by Alexander Yang and Nicholas Seniow
 
-Fake (banking) app to bait people that steal your phone into giving up info
+Fake banking app to bait people that steal your phone into giving up their info and getting themselves caught
 
-Eg. when the fake app is open, take a picture with selfie cam and notify owner via twillio
+When the theif tries to do anything in the app, a photo is taken of them and uploaded to firebase. The phones location is also periodically uploaded to firebase.
 
-Location periodically updated to firebase database
-
-upload image to google cloud and send a text with notification
-
+A second app at https://github.com/a-xm-yang/BaitMasterTracker is required to be installed on another phone to access this information

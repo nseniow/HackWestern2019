@@ -139,7 +139,7 @@ public class TangerineActivity extends FakeActivity {
     }
 
     private void fakeLoginInformation(){
-        Toast.makeText(this, "Twilio Authentication Social Engineering blahblah", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Connection problem. Please try again.", Toast.LENGTH_LONG).show();
     }
 
     public boolean isConnected() throws InterruptedException, IOException {
