@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Network.LoginActivity">
+    tools:context=".Network.LoginActivity"
+    android:background="@drawable/background_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +20,12 @@
             android:ems="10"
             android:gravity="center"
             android:hint="(email)"
+            android:backgroundTint="#FFFFFF"
+            android:foregroundTint="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#FFFFFF"
             android:inputType="textPersonName" />
 
         <EditText
@@ -27,12 +34,20 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:ems="10"
+            android:backgroundTint="#FFFFFF"
+            android:foregroundTint="#FFFFFF"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FFFFFF"
+            android:textColorLink="#FFFFFF"
             android:gravity="center"
             android:hint="(password)"
             android:inputType="textPassword" />
 
         <Button
             android:id="@+id/button2"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/tangerine_black_box"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
