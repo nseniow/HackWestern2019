@@ -1,5 +1,7 @@
 # HackWestern
-Hack Western Hack
+Hack Western Hack --- Winner of Best Security Implementation Award
+
+https://devpost.com/software/bait-master
 
 
 Project for HackWestern 2019 by Alexander Yang and Nicholas Seniow
